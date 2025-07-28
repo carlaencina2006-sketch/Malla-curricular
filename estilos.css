@@ -1,1 +1,211 @@
+:root {
+    --color-fondo: #fdf6ff; /* Un lila muy claro */
+    --color-texto: #4f4f4f;
+    --color-primario: #d6bbfb; /* Morado pastel principal */
+    --color-secundario: #f8b3c8; /* Rosa pastel */
+    --color-aprobado: #bde0fe; /* Azul pastel */
+    --color-bloqueado: #d3d3d3; /* Gris claro */
+    --color-blanco: #ffffff;
+    --sombra-caja: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
 
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    line-height: 1.6;
+}
+
+header, footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: var(--color-texto);
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+header h2 {
+    margin: 0.5rem 0;
+    font-weight: 400;
+}
+
+#reset-button {
+    background-color: #ff8fa3; /* Un rosado más fuerte */
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+#reset-button:hover {
+    background-color: #ff6b6b;
+}
+
+#malla-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    padding: 2rem;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.semestre-columna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.semestre-titulo {
+    font-weight: 700;
+    color: #8c73b3; /* Un morado más oscuro para el texto */
+    text-align: center;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--color-primario);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.ciclo-titulo {
+    grid-column: span 3; 
+    text-align: center;
+    align-self: center;
+    background-color: #ffdda1; /* Un amarillo pastel */
+    color: var(--color-texto);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.ramo {
+    background-color: var(--color-blanco);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: var(--sombra-caja);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--color-primario);
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ramo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ramo.aprobado {
+    background-color: var(--color-aprobado);
+    color: var(--color-texto);
+    border-left-color: #a2d2ff;
+    text-decoration: line-through;
+    opacity: 0.9;
+}
+
+.ramo.bloqueado {
+    background-color: var(--color-bloqueado);
+    color: #6c757d;
+    border-left-color: #a4a4a4;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Estilos del Modal */
+.modal-oculto {
+    display: none;
+}
+
+.modal-visible {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: var(--color-blanco);
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: var(--color-texto);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#mensaje-titulo {
+    color: var(--color-secundario);
+    margin-top: 0;
+}
+
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+
+/* Diseño Responsivo */
+@media (max-width: 1600px) {
+    #malla-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .ciclo-titulo {
+        grid-column: span 5;
+    }
+}
+
+@media (max-width: 992px) {
+    #malla-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+     .ciclo-titulo {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 768px) {
+    #m
